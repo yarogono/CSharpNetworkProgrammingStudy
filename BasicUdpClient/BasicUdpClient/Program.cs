@@ -15,7 +15,7 @@ namespace BasicUdpClient
 
             // (2) 데이터 송신
             udpClient.Send(datagram, datagram.Length, "127.0.0.1", 9999);
-            Console.WriteLine("[Send] 127.0.0.1:7777 로 {0} 바이트 전송", datagram.Length);
+            Console.WriteLine("[Send] 127.0.0.1:9999 로 {0} 바이트 전송", datagram.Length);
 
             // (3) 데이타 수신
             IPEndPoint epRemote = new IPEndPoint(IPAddress.Any, 0);
