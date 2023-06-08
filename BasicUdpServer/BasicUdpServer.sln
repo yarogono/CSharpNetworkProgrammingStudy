@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicUdpServer", "BasicUDP\BasicUdpServer.csproj", "{7B86D383-C44B-4328-9963-D72C92CB0FB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicUdpServer", "BasicUdpServer\BasicUdpServer.csproj", "{7B86D383-C44B-4328-9963-D72C92CB0FB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
