@@ -45,7 +45,6 @@ namespace BasicSocketClient
 
                     if (cmd.Equals("Quit"))
                     {
-                        Console.WriteLine("Client Disconnected");
                         break;
                     }
 

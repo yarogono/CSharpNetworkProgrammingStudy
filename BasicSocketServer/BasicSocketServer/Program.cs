@@ -50,6 +50,7 @@ namespace BasicSocketServer
 
                     if (data.Equals("Quit"))
                     {
+                        Console.WriteLine("Client Disconnected");
                         break;
                     }
 
