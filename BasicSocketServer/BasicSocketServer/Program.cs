@@ -20,8 +20,6 @@ namespace BasicSocketServer
             // (1) 소켓 객체 생성 (TCP 소켓)
             Socket listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-
-
             try
             {
                 // (2) 포트에 바인드
@@ -39,11 +37,9 @@ namespace BasicSocketServer
                 // Data buffer for incoming data.
                 byte[] bytes = new byte[8192];
 
-                string cmd = string.Empty;
+                Console.WriteLine("Client Connected...");
 
-                Console.WriteLine("Connected... Enter Q to exit");
-
-                while ((cmd = Console.ReadLine()) != "Q")   // 키 누르면 종료
+                while (true)   // 키 누르면 종료
                 {
 
                     // (5) 소켓 수신
@@ -52,15 +48,20 @@ namespace BasicSocketServer
                     string data = Encoding.UTF8.GetString(bytes, 0, bytesRec);
                     Console.WriteLine("Text received : {0}", data);
 
+                    if (data.Equals("Quit"))
+                    {
+                        break;
+                    }
+
                     byte[] msg = Encoding.ASCII.GetBytes(data);
 
                     // (6) 소켓 송신
-                    handler.Send(msg);  // echo
-                    handler.Shutdown(SocketShutdown.Both);
-
-                    // (7) 소켓 닫기
-                    handler.Close();
+                    handler.Send(bytes, 0, bytesRec, SocketFlags.None);  // echo
                 }
+
+                // (7) 소켓 닫기
+                handler.Close();
+                listener.Close();
             }
             catch (Exception ex)
             {

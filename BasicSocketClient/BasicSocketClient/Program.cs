@@ -29,11 +29,12 @@ namespace BasicSocketClient
                 string cmd = string.Empty;
                 byte[] receiverBuff = new byte[8192];
 
-                Console.WriteLine("Connected... Enter Q to exit");
+                Console.WriteLine("Connected... Enter Quit to exit");
 
                 // Q를 누를 때까지 계속 Echo 실행
-                while ((cmd = Console.ReadLine()) != "Q")
+                while (true)
                 {
+                    cmd = Console.ReadLine();
                     byte[] buff = Encoding.UTF8.GetBytes(cmd);
 
                     // (3) 서버에 데이터 전송
@@ -42,7 +43,13 @@ namespace BasicSocketClient
                     // (4) 서버에서 데이터 수신
                     int bytesRec = sender.Receive(receiverBuff);
 
-                    Console.WriteLine("Echoed test = {0}", Encoding.ASCII.GetString(receiverBuff, 0, bytesRec));
+                    if (cmd.Equals("Quit"))
+                    {
+                        Console.WriteLine("Client Disconnected");
+                        break;
+                    }
+
+                    Console.WriteLine("Echoed test = {0}", Encoding.UTF8.GetString(receiverBuff, 0, bytesRec));
                 }
 
                 // (5) 소켓 닫기
